@@ -42,7 +42,5 @@ class TestUserLogin:
                 "password": "test"}
         response = client.post(self.url, data=data)
 
-        new_user = User.objects.first()
-
         assert response.status_code == 401
         assert response.json() == {'detail': 'Incorrect authentication credentials.'}

@@ -7,9 +7,9 @@ from users.serializers import UserSerializer
 
 @pytest.mark.django_db
 class TestUserProfile:
-    url = '/users/profile/'
+    url: str = '/users/profile/'
 
-    def test_get_user_profile_for_self(self, auth_client):
+    def test_get_user_profile_for_self(self, auth_client) -> None:
         current_user = User.objects.first()
 
         response = auth_client.get(self.url + f'{current_user.id}')
@@ -17,8 +17,7 @@ class TestUserProfile:
         assert response.status_code == 200
         assert response.json() == UserSerializer(current_user).data
 
-
-    def test_get_user_profile_for_superuser(self, staff_client):
+    def test_get_user_profile_for_superuser(self, staff_client) -> None:
         current_user = User.objects.first()
         user = UserFactory.create()
 
@@ -27,7 +26,7 @@ class TestUserProfile:
         assert response.status_code == 200
         assert response.json() == UserSerializer(user).data
 
-    def test_get_user_profile_without_permission(self, auth_client):
+    def test_get_user_profile_without_permission(self, auth_client) -> None:
         current_user = User.objects.first()
         user = UserFactory.create()
 
@@ -35,7 +34,7 @@ class TestUserProfile:
 
         assert response.status_code == 403
 
-    def test_patch_user_profile_for_self(self, auth_client):
+    def test_patch_user_profile_for_self(self, auth_client) -> None:
         current_user = User.objects.first()
 
         response = auth_client.patch(self.url + f'{current_user.id}', params={
@@ -47,7 +46,7 @@ class TestUserProfile:
         assert response.status_code == 200
         assert response.json() == UserSerializer(user).data
 
-    def test_delete_user_profile_for_admin(self, staff_client):
+    def test_delete_user_profile_for_admin(self, staff_client) -> None:
         current_user = UserFactory.create()
 
         response = staff_client.delete(self.url + f'{current_user.id}')

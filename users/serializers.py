@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict, Any
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
@@ -25,7 +25,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         model = User
         fields: List[str] = ['id', 'username', 'first_name', 'last_name', 'email', 'password', 'password_repeat']
 
-    def validate(self, attrs) -> dict:
+    def validate(self, attrs) -> Dict[str, Any]:
         """
         The validate function overrides the method of the parent class. Takes the values of the class instance
         attributes as parameters. Calls the parent method and adds password complexity checks in accordance with
@@ -40,7 +40,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         del data['password_repeat']
         return data
 
-    def create(self, validated_data) -> User:
+    def create(self, validated_data: Dict[str, Any]) -> User:
         """
         The create function overrides the method of the parent class. Takes validated_data values as parameters.
         Creates an instance of the User class, adds the value of the hashed password, and stores the object
@@ -74,13 +74,13 @@ class LoginSerializer(serializers.ModelSerializer):
         model = User
         fields: List[str] = ['id', 'username', 'first_name', 'last_name', 'email', 'password']
 
-    def create(self, validated_data) -> User:
+    def create(self, validated_data: Dict[str, Any]) -> User:
         """
         The create function overrides the method of the parent class. Takes validated_data values as parameters.
         Authenticates an instance of the User class according to the values received, raises an AuthenticationFailed
         exception if there is no user information or incorrect data in the database. Returns the found object.
         """
-        user = authenticate(username=validated_data['username'], password=validated_data['password'])
+        user: User = authenticate(username=validated_data['username'], password=validated_data['password'])
         if user is None:
             raise AuthenticationFailed
         return user

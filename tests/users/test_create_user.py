@@ -27,7 +27,6 @@ class TestUserCreate:
 
         assert response.status_code == 400
         assert response.json() == {'non_field_errors': ['The entered passwords must match']}
-    
 
     def test_user_create_without_username(self, client) -> None:
         data = {"password": "test_password",
@@ -54,7 +53,6 @@ class TestUserCreate:
         assert response.json() == {'password_repeat': ['This field is required.']}
 
     def test_user_create_with_shot_password(self, client) -> None:
-
         data = {"username": "test_username",
                 "password": "test",
                 "password_repeat": "test"}
@@ -66,7 +64,6 @@ class TestUserCreate:
                                                         'This password is too common.']}
 
     def test_user_create_with_exist_username(self, client, user) -> None:
-
         user = User.objects.first()
 
         data = {"username": f"{user.username}",

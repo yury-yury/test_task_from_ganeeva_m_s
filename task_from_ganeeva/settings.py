@@ -157,7 +157,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Test task for Ganeeva Maria Sergeevna",
-    "DESCRIPTION": "Test task",
+    "TITLE": "Test task",
+    "DESCRIPTION": "Test task for Ganeeva Maria Sergeevna",
     "VERSION": "1.0.0",
 }

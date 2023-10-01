@@ -33,7 +33,6 @@ class TestUserList:
     def test_users_list_without_permission(self, auth_client) -> None:
         response = auth_client.get(self.url)
 
-
         assert response.status_code == 403
         assert response.json() == {'detail': 'You do not have permission to perform this action.'}
 

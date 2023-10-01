@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "47f6a49f-34cc-4da0-9467-c4c915c331e4",
+		"name": "Test task from Ganeeva Maria Sergeevna",
+		"description": "A collection of basic requests to the project API made during the implementation of a test task from IP Ganeeva Maria Sergeevna.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24610581",
+		"_collection_link": "https://speeding-crater-669833.postman.co/workspace/e6f6425b-9060-44d7-8415-8e00acf1dfaa/collection/24610581-47f6a49f-34cc-4da0-9467-c4c915c331e4?action=share&source=collection_link&creator=24610581"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/users/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test_user\",\n    \"password\": \"test_password\",\n    \"password_repeat\": \"test_password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"signup"
+					]
+				},
+				"description": "A request to the API to create a new user object."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test_user\",\n    \"password\": \"test_password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "A request to the API to register a user in the system."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						""
+					]
+				},
+				"description": "A request to the API to display a list of all users. The result of the query is returned with pagination of 10 instances of user objects. The request is executed only for a user with administrator status."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/?ordering=-id",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/?ordering=-id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "-id"
+						}
+					]
+				},
+				"description": "A request to the API to display a list of all users. An example of executing a query by passing a parameter to sort the results."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/?username=test",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/?username=test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test"
+						}
+					]
+				},
+				"description": "A request to the API to display a list of all users. An example of executing a query with passing a parameter to filter the results."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/profile/11",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/profile/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"profile",
+						"11"
+					]
+				},
+				"description": "A request to the API to display detailed information for one user. The request can only be executed by the profile owner or a user with administrator status."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/profile/11",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test_user\",\n    \"first_name\": \"test_user\",\n    \"last_name\": \"test_user\",\n    \"email\": \"test_user@simple.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/profile/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"profile",
+						"11"
+					]
+				},
+				"description": "A request to the API to update information for one user. The request can only be executed by the profile owner or a user with administrator status."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/profile/11",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test_user_after_fix\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/profile/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"profile",
+						"11"
+					]
+				},
+				"description": "A request to the API to partially update information for one user. The request can only be executed by the profile owner or a user with administrator status."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/profile/11",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "super",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/profile/11",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"profile",
+						"11"
+					]
+				},
+				"description": "A request to the API to delete information for one user. The request can only be executed by the profile owner or a user with administrator status. The functionality completes the user's registration in the system; the user's profile information remains in the database."
+			},
+			"response": []
+		}
+	]
+}
